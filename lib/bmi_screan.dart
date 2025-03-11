@@ -1,5 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Bmi_Calculator extends StatefulWidget {
   const Bmi_Calculator({super.key});
@@ -109,6 +110,8 @@ class _Bmi_CalculatorState extends State<Bmi_Calculator> {
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.baseline,
+                      textBaseline: TextBaseline.alphabetic,
                       children: [
                         Text(
                           height.toStringAsFixed(0),
@@ -168,9 +171,11 @@ class _Bmi_CalculatorState extends State<Bmi_Calculator> {
                                   });
                                 },
                                 icon: Icon(
-                                  Icons.minimize,
+                                  FontAwesomeIcons.minus,
                                   size: 30,
-                                )),
+                                ),
+                              color: Colors.black,
+                            ),
                             IconButton(
                                 onPressed: () {
                                   setState(() {
@@ -178,9 +183,11 @@ class _Bmi_CalculatorState extends State<Bmi_Calculator> {
                                   });
                                 },
                                 icon: Icon(
-                                  Icons.add,
+                                  FontAwesomeIcons.add,
                                   size: 30,
-                                ))
+                                ),
+                              color: Colors.black,
+                            ),
                           ],
                         )
                       ],
@@ -219,19 +226,25 @@ class _Bmi_CalculatorState extends State<Bmi_Calculator> {
                                   });
                                 },
                                 icon: Icon(
-                                  Icons.minimize,
+                                  FontAwesomeIcons.minus,
                                   size: 30,
-                                )),
+                                  color: Colors.black,
+                                ),
+                              color: Colors.black,
+                            ),
                             IconButton(
                                 onPressed: () {
                                   setState(() {
                                     weight++;
                                   });
                                 },
-                                icon: Icon(
-                                  Icons.add,
-                                  size: 30,
-                                ))
+                              icon: Icon(
+                                FontAwesomeIcons.add,
+                                size: 30,
+                                color: Colors.black,
+                              ),
+                              color: Colors.black,
+                            ),
                           ],
                         )
                       ],
@@ -248,9 +261,12 @@ class _Bmi_CalculatorState extends State<Bmi_Calculator> {
                       (weight / ((height / 100) * (height / 100)));
                   AwesomeDialog(
                     context: context,
-                    dialogType: calculation>30?DialogType.warning:DialogType.success,
+                    dialogType: calculation > 30
+                        ? DialogType.warning
+                        : DialogType.success,
                     borderSide: BorderSide(
-                      color: calculation>30?Colors.orangeAccent:Colors.green,
+                      color:
+                          calculation > 30 ? Colors.orangeAccent : Colors.green,
                       width: 3,
                     ),
                     animType: AnimType.bottomSlide,
@@ -266,15 +282,19 @@ class _Bmi_CalculatorState extends State<Bmi_Calculator> {
                           Text("Your Age : $age "),
                           Text("Your Weight : $weight Kg"),
                           Text("Your height : ${height.toStringAsFixed(0)} cm"),
-                          Text(calculation < 18.5
-                              ? "you are Under Weight "
-                              : calculation < 24.9
-                                  ? "you are Normal"
-                                  : calculation < 29.9
-                                      ? "you are Over weight"
-                                      : calculation < 34.9
-                                          ? "you are Obese"
-                                          : "you are Extremely Obese",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),
+                          Text(
+                            calculation < 18.5
+                                ? "you are Under Weight "
+                                : calculation < 24.9
+                                    ? "you are Normal"
+                                    : calculation < 29.9
+                                        ? "you are Over weight"
+                                        : calculation < 34.9
+                                            ? "you are Obese"
+                                            : "you are Extremely Obese",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 16),
+                          ),
                         ],
                       ),
                     ),
